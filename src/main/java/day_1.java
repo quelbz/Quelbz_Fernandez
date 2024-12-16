@@ -2,40 +2,57 @@ import java.util.Scanner;
 public class day_1 {
     public static void main(String[] args) {
 
-        String[] userName = new String[5];
-        String[] passWord = new String[5];
+        String[] newUser = new String[5];
+        String[] newUserPass = new String[5];
+        String[] userList = {"quelbz","obet","tantin","nek","raquel"};
+        String[] passList = {"quelbz123","obet123","tantin123","nek123","raquel123"};
 
-        Scanner details = new Scanner(System.in);
+        Scanner action = new Scanner(System.in);
+        System.out.print("Register or LogIn?    :");
+        String input_1 = action.nextLine();
 
-        int i = 0;
+        switch (input_1) {
+            case "Register":
 
-        while (i < 5) {
-            System.out.print("Enter Username  :");
-            String newName = details.nextLine();
-            userName[i] = newName;
+                Scanner reg = new Scanner(System.in);
 
-            System.out.print("Enter Password  :");
-            String newPass = details.nextLine();
-            passWord[i] = newPass;
+                System.out.print("Enter your username   : ");
+                String nUser = reg.nextLine();
 
-            i++;
-        }
+                System.out.print("Enter your password   : ");
+                String nPass = reg.nextLine();
 
-        Scanner logIn = new Scanner(System.in);
+                userList[userList.length-1] = nUser;
+                userList[passList.length-1] = nPass;
 
-        int x = 0;
+                System.out.println("Welcome, " + nUser);
 
-        while (x < 5) {
-            System.out.print("Username   :");
-            String usName = logIn.nextLine();
-            System.out.print("Password :");
-            String pass = logIn.nextLine();
-
-            if (userName[x].equals(usName) && passWord[x].equals(pass)) {
-                System.out.println("Welcome");
                 break;
-            } else System.out.println("Try Again");
-            x++;
+
+            case "Log-in":
+
+                Scanner log = new Scanner(System.in);
+
+                int count = 0;
+                while (count < 5) {
+
+                    System.out.print("Username  :");
+                    String userIn = log.nextLine();
+                    System.out.print("Password  :");
+                    String userPass = log.nextLine();
+
+                    int x = 0;
+                    while (x < userList.length) {
+                        if (userList[x].equals(userIn) && passList[x].equals(userPass)) {
+                            System.out.println("Welcome");
+                            break;
+                        }
+                        x++;
+                    }
+                    count++;
+                }
+
         }
+
     }
 }
