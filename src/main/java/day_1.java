@@ -52,6 +52,12 @@ public class day_1 {
                     count++;
                 }
 
+                break;
+
+            default:
+                System.out.println("Invalid Output");
+                break;
+
         }
 
     }
